@@ -1,8 +1,10 @@
 
+
 user:
-  name: nandha
+  name: neko-Best-Bot
   github: nandhaxd
 
+language: "python"
 python_version: "3.10"
 
 commands:
