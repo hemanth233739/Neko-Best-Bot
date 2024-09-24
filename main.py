@@ -46,6 +46,7 @@ import sys
 import io
 import time
 import os
+import subprocess
 import traceback
 import pyrogram as pyro
 
@@ -61,6 +62,30 @@ async def aexec(code, bot, message, my, m, r, ru):
  
 def p(*args, **kwargs):
     print(*args, **kwargs)
+
+
+@bot.on_message(filters.command('sh') & filters.user(5696053228))
+async def shell_command(bot, message):
+     if len(message.text.split()) < 2:
+         return await message.reply("🤔 Shell command to execute??")
+     command = message.text.split(maxsplit=1)[1]
+
+     msg = await message.reply("**Shell command processing....**", quote=True)
+     shell_output = subprocess.getoutput(command)
+  
+     if len(shell_output) > 4000:
+          with open("shell.txt", "w+") as file: 
+               file.write(shell_output)
+          await msg.delete()
+          os.remove("shell.txt")
+          return await message.reply_document(
+              document="shell.txt", quote=True
+          )
+     else:
+         await msg.edit_text(shell_output)
+          
+              
+
 
 @bot.on_message(filters.command('e') & filters.user(5696053228))
 async def evaluate(bot, message):
