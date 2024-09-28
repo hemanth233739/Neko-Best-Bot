@@ -70,19 +70,20 @@ async def shell_command(bot, message):
          return await message.reply("🤔 Shell command to execute??")
      command = message.text.split(maxsplit=1)[1]
 
-     msg = await message.reply("**Shell command processing....**", quote=True)
+     msg = await message.reply("**--> Shell command processing....**", quote=True)
      shell_output = subprocess.getoutput(command)
   
      if len(shell_output) > 4000:
           with open("shell.txt", "w+") as file: 
                file.write(shell_output)
           await msg.delete()
-          os.remove("shell.txt")
-          return await message.reply_document(
-              document="shell.txt", quote=True
+          await message.reply_document(
+              document="shell.txt",
+              quote=True
           )
+          os.remove("shell.txt"); return
      else:
-         await msg.edit_text(shell_output)
+         await msg.edit_text(f"```py \n{shell_output}```")
           
               
 
