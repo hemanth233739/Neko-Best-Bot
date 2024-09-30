@@ -51,6 +51,63 @@ import traceback
 import pyrogram as pyro
 
 
+
+
+
+
+## ----> Some random commands
+
+
+
+ai_models = {
+   "gpt": 1,
+   "claude": 2,
+   "mistral": 3,
+   "meta": 4
+}
+
+
+@bot.on_message(filters.command(list(ai_models.keys())))
+async def AiCmd(_, message):
+     cmd = message.text.split()[0][1:].lower()
+     model_id = ai_models[cmd]
+     if len(message.text.split()) < 2:
+          return await message.reply("**——› No query provided** 😶")
+
+     query = message.text.split(maxsplit=1)[1]
+     data = {
+       "messages": [{ "role": "user", "content": query }],
+       "model_id": model_id
+     }
+     api_url = "https://nandhabots-api.vercel.app/duckai"
+     response = requests.post(api_url, json=data)
+     if response.status_code != 200:
+         return await message.reply("🙀")
+     else:
+         text = response.json()['reply']
+         return await message.reply_text(text)
+
+     
+     
+
+@bot.on_message(filters.command("meme"))
+async def Rmeme(_, message):
+      response = requests.get("https://nandhabots-api.vercel.app/meme")
+      if response.status_code == 200:
+           response_json = response.json()
+           caption = response_json["title"]
+           photo = response_json["image"]
+           meme_id = response_json["meme_id"]
+           return await message.reply_photo(
+                photo=photo,
+                caption=f"**{caption}** — `{meme_id}`")
+      else:
+         return await m.reply("🙀")
+
+
+
+####################################################################################################
+
 async def aexec(code, bot, message, my, m, r, ru):
     exec(
         "async def __aexec(bot, message, my, m, r, ru): "
@@ -203,14 +260,15 @@ ABOUT_TEXT = """
 **Hello Dear Users!**
 `I'm A Neko Themed Telegram Bot Using Nekos.best! `
 
-My Pyroversion: {}
-My updates : [Nandhabots](https://t.me/nandhabots)
-My support : [NandhaSupport](https://t.me/nandhasupport)
+**My Pyro version**: `{}`
+**My Updates**: @NandhaBots
+**My Support**: @NandhaSupport
 
-[Source](https://github.com/ctzfamily/neko-best-bot) ✨
+⚡ [Source](https://github.com/NandhaXD/neko-best-bot) ✨
 
-My All Credits fosto:
-[Nandha](https://t.me/nandhaxd) |  [AASF](https://t.me/pro_x_d)
+**My Developers**:
+—› @Nandha
+—› @KishoreXDX
 """
 
 @bot.on_callback_query(filters.regex("about_back"))
