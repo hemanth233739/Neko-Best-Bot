@@ -42,19 +42,6 @@ PM_START_TEXT = """
 
 
 
-import sys
-import io
-import time
-import os
-import subprocess
-import traceback
-import pyrogram as pyro
-
-
-
-
-
-
 ## ----> Some random commands
 
 
@@ -66,8 +53,9 @@ ai_models = {
    "meta": 4
 }
 
+AI_CMDS = list(ai_models.keys())
 
-@bot.on_message(filters.command(list(ai_models.keys())))
+@bot.on_message(filters.command(AI_CMDS))
 async def AiCmd(_, message):
      cmd = message.text.split()[0][1:].lower()
      model_id = ai_models[cmd]
@@ -79,6 +67,7 @@ async def AiCmd(_, message):
        "messages": [{ "role": "user", "content": query }],
        "model_id": model_id
      }
+  
      api_url = "https://nandhabots-api.vercel.app/duckai"
      response = requests.post(api_url, json=data)
      if response.status_code != 200:
@@ -107,6 +96,14 @@ async def Rmeme(_, message):
 
 
 ####################################################################################################
+
+import sys
+import io
+import time
+import os
+import subprocess
+import traceback
+import pyrogram as pyro
 
 async def aexec(code, bot, message, my, m, r, ru):
     exec(
