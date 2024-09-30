@@ -29,6 +29,8 @@ buttons = [[
             InlineKeyboardButton("sᴜᴘᴘᴏʀᴛ", url=f"https://t.me/{SUPPORT}"),
             InlineKeyboardButton("ᴜᴘᴅᴀᴛᴇs", url=f"https://t.me/{UPDATES}")]]
 
+
+
 PM_START_TEXT = """
 **Welcome** {}~kun ฅ(≈>ܫ<≈)
 `I'm A Neko Themed Telegram Bot Using Nekos.best! `
@@ -46,19 +48,19 @@ PM_START_TEXT = """
 
 
 
-ai_models = {
+AI_MODELS: dict = {
    "gpt": 1,
    "claude": 2,
    "mistral": 3,
    "meta": 4
 }
 
-AI_CMDS = list(ai_models.keys())
+AI_COMMANDS: list = list(AI_MODELS.keys())
 
-@bot.on_message(filters.command(AI_CMDS))
-async def AiCmd(_, message):
+@bot.on_message(filters.command(AI_COMMANDS))
+async def _AiCmds(_, message):
      cmd = message.text.split()[0][1:].lower()
-     model_id = ai_models[cmd]
+     model_id = AI_MODELS[cmd]
      if len(message.text.split()) < 2:
           return await message.reply("**——› No query provided** 😶")
 
