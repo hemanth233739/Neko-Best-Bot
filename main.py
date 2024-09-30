@@ -69,14 +69,15 @@ async def _AiCmds(_, message):
        "messages": [{ "role": "user", "content": query }],
        "model_id": model_id
      }
-  
+
+     msg = await message.reply("🗿")
      api_url = "https://nandhabots-api.vercel.app/duckai"
      response = requests.post(api_url, json=data)
      if response.status_code != 200:
-         return await message.reply("🙀")
+         return await msg.edit_text(f"[ ❌ ERROR: `{e}`]")
      else:
          text = response.json()['reply']
-         return await message.reply_text(text)
+         return await msg.edit_text(text)
 
      
      
@@ -93,7 +94,7 @@ async def Rmeme(_, message):
                 photo=photo,
                 caption=f"**{caption}** — `{meme_id}`")
       else:
-         return await m.reply("🙀")
+         return await m.reply("🙀 Error...")
 
 
 
