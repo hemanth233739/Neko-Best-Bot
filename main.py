@@ -23,11 +23,11 @@ bot = Client("nandhabot", api_id=API_ID, api_hash=API_HASH, bot_token=BOT_TOKEN)
 
 
 buttons = [[
-            InlineKeyboardButton("ᴀᴅᴅ ᴍᴇ", url=f"t.me/{BOT_USERNAME}?startgroup=true"),
-            InlineKeyboardButton("ʜᴇʟᴘ", callback_data="help_back"),
+            InlineKeyboardButton("Add Me To Group", url=f"t.me/{BOT_USERNAME}?startgroup=true"),
+            InlineKeyboardButton("Get Help", callback_data="help_back"),
            ],[
-            InlineKeyboardButton("sᴜᴘᴘᴏʀᴛ", url=f"https://t.me/{SUPPORT}"),
-            InlineKeyboardButton("ᴜᴘᴅᴀᴛᴇs", url=f"https://t.me/{UPDATES}")]]
+            InlineKeyboardButton("Support", url=f"https://t.me/{SUPPORT}"),
+            InlineKeyboardButton("Updates", url=f"https://t.me/{UPDATES}")]]
 
 
 
@@ -253,8 +253,8 @@ async def helpback(_, query: CallbackQuery):
            query = query.message
            await query.edit_caption(HELP_TEXT,
              reply_markup=InlineKeyboardMarkup([[
-                InlineKeyboardButton("ᴍᴏʀᴇ", callback_data="more_help_text"),
-                InlineKeyboardButton("ᴀʙᴏᴜᴛ", callback_data="about_back")]]))
+                InlineKeyboardButton("More", callback_data="more_help_text"),
+                InlineKeyboardButton("Info", callback_data="about_back")]]))
 
 ABOUT_TEXT = """
 **Hello Dear Users!**
@@ -264,11 +264,11 @@ ABOUT_TEXT = """
 **My Updates**: @NandhaBots
 **My Support**: @NandhaSupport
 
-⚡ [Source](https://github.com/NandhaXD/neko-best-bot) ✨
+⚡ [Source for this Bot ](https://github.com/NandhaXD/neko-best-bot)
 
 **My Developers**:
 —› @Nandha
-—› @KishoreXDX
+—› @KishoreDXD
 """
 
 @bot.on_callback_query(filters.regex("about_back"))
@@ -276,7 +276,7 @@ async def about(_, query: CallbackQuery):
            query = query.message
            await query.edit_caption(ABOUT_TEXT.format(pyro),
              reply_markup=InlineKeyboardMarkup([[
-                InlineKeyboardButton("ʙᴀᴄᴋ", callback_data="help_back")]]))
+                InlineKeyboardButton("Back", callback_data="help_back")]]))
 
 MORE_HELP_TEXT = """
 **Anime themed SFW:**
@@ -304,7 +304,7 @@ async def helpmore(_, query: CallbackQuery):
            query = query.message
            await query.edit_caption(MORE_HELP_TEXT,
              reply_markup=InlineKeyboardMarkup([[
-                InlineKeyboardButton("ʙᴀᴄᴋ", callback_data="help_back")]]))
+                InlineKeyboardButton("Back", callback_data="help_back")]]))
 
 
 OWO = (
