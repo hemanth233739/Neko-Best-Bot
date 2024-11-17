@@ -3,6 +3,9 @@ from pyrogram import filters, enums, Client, __version__ as pyro
 from pyrogram.types import *
 
 import requests 
+from pyrogram.errors import FloodWait
+import time
+
 
 # enable logging
 FORMAT = "[Nekos-Best-Bot] %(message)s"
@@ -920,6 +923,10 @@ def neko(_, message):
         ke.format(name)
     )
 
-bot.run()
+try:
+    bot.run()
+except FloodWait as e:
+    print(f"Flood wait error. Waiting for {e.x} seconds.")
+    time.sleep(e.x)
 with bot:
          bot.send_message(f"@{SUPPORT}", f"Hello there I'm Online!\nPyroVersion: {pyro}")
