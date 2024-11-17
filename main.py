@@ -16,7 +16,7 @@ API_HASH = os.environ.get("API_HASH", "8663682496c76b1240e4b7e527577dad")
 BOT_TOKEN = os.environ.get("BOT_TOKEN", "7297253597:AAHrTYEUrIulhyhHSPJiUfOVk9JkUU-q1f0")
 SUPPORT = os.environ.get("SUPPORT", "Hgbotsupportgroup")
 UPDATES = os.environ.get("UPDATES", "HgBotsupdates")
-BOT_USERNAME = os.environ.get("BOT_USERNAME", "MusicThonalaBot) 
+BOT_USERNAME = os.environ.get("BOT_USERNAME", "MusicThonalaBot") 
 
 
 bot = Client("nandhabot", api_id=API_ID, api_hash=API_HASH, bot_token=BOT_TOKEN)
