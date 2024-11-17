@@ -264,14 +264,14 @@ ABOUT_TEXT = """
 `I'm A Neko Themed Telegram Bot Using Nekos.best! `
 
 **My Pyro version**: `{}`
-**My Updates**: @NandhaBots
-**My Support**: @NandhaSupport
+**My Updates**: @HgBotsupdates
+**My Support**: @HgBotSupportGroup
 
-⚡ [Source for this Bot ](https://github.com/NandhaXD/neko-best-bot)
+⚡ [Source for this Bot ](https://t.me/hgbotsupportgroup)
 
 **My Developers**:
-—› @Nandha
-—› @KishoreDXD
+—› @hemanthgaming_1k
+—› @KoraXD
 """
 
 @bot.on_callback_query(filters.regex("about_back"))
