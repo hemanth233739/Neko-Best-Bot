@@ -11,12 +11,12 @@ logging.basicConfig(
 )
   
 
-API_ID = os.environ.get("API_ID", 28597728)
-API_HASH = os.environ.get("API_HASH", "64ff048a1bb3a2096b682d7915dfb6d8")
-BOT_TOKEN = os.environ.get("BOT_TOKEN", "7106418611:AAGV2rVhZeHCypTWNRA9W8uam8dA8sKZsBs")
-SUPPORT = os.environ.get("SUPPORT", "NandhaSupport")
-UPDATES = os.environ.get("UPDATES", "NandhaBots")
-BOT_USERNAME = os.environ.get("BOT_USERNAME", "NekosBestBot") 
+API_ID = os.environ.get("API_ID", 8577898)
+API_HASH = os.environ.get("API_HASH", "8663682496c76b1240e4b7e527577dad")
+BOT_TOKEN = os.environ.get("BOT_TOKEN", "7297253597:AAHrTYEUrIulhyhHSPJiUfOVk9JkUU-q1f0")
+SUPPORT = os.environ.get("SUPPORT", "Hgbotsupportgroup")
+UPDATES = os.environ.get("UPDATES", "HgBotsupdates")
+BOT_USERNAME = os.environ.get("BOT_USERNAME", "MusicThonalaBot) 
 
 
 bot = Client("nandhabot", api_id=API_ID, api_hash=API_HASH, bot_token=BOT_TOKEN)
